@@ -124,7 +124,10 @@
 
     .top-tools {
       display: grid;
-      gap: 10px;
+      grid-template-columns: auto auto;
+      align-items: center;
+      justify-content: end;
+      gap: 8px;
       justify-items: end;
     }
 
@@ -180,6 +183,11 @@
     }
 
     .language-toggle:hover { background: #f4faf7; }
+
+    .top-tools .source-note {
+      grid-column: 1 / -1;
+      justify-self: end;
+    }
 
     .tool-switch {
       display: inline-grid;
@@ -787,7 +795,8 @@
       font-size: 14px;
     }
 
-    .report ul {
+    .report ul,
+    .report ol {
       margin: 10px 0 0;
       padding-left: 18px;
       color: #3c494d;
@@ -1115,23 +1124,181 @@
     }
 
     @media (max-width: 900px) {
+      .app {
+        padding: 22px 14px 34px;
+      }
+
       .layout,
       .hero-card,
       .phone-tool {
         grid-template-columns: 1fr;
+        gap: 14px;
       }
 
       .form-panel { position: static; }
       .source-note { text-align: left; max-width: none; }
       .topbar { align-items: flex-start; flex-direction: column; }
+      .top-tools {
+        width: 100%;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+        justify-content: stretch;
+        justify-items: stretch;
+      }
+      .mode-switch {
+        width: 100%;
+      }
+      .tool-switch { width: 100%; }
+      .language-toggle {
+        width: auto;
+        min-width: 76px;
+        white-space: nowrap;
+      }
+      .top-tools .source-note {
+        justify-self: start;
+      }
       .top-account #loginArea:not([hidden]),
       .top-account #accountArea:not([hidden]) {
         grid-template-columns: 1fr;
       }
+      .top-account .history-list {
+        max-height: none;
+        padding-bottom: 4px;
+      }
     }
 
     @media (max-width: 620px) {
-      .app { padding: 18px 12px 30px; }
+      body {
+        background:
+          radial-gradient(circle at 18% 8%, rgba(183, 130, 46, .12), transparent 18rem),
+          linear-gradient(180deg, #faf4f1 0%, #f6eef1 100%);
+      }
+
+      .app { padding: 14px 10px 26px; }
+
+      .topbar {
+        gap: 12px;
+        margin-bottom: 14px;
+      }
+
+      .brand {
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .seal {
+        width: 38px;
+        height: 38px;
+        border-radius: 7px;
+      }
+
+      .seal svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      h1 {
+        font-size: 24px;
+        line-height: 1.16;
+      }
+
+      .subtitle {
+        margin-top: 5px;
+        font-size: 12px;
+        line-height: 1.45;
+      }
+
+      .panel {
+        border-radius: 7px;
+        box-shadow: 0 10px 28px rgba(70, 24, 36, .10);
+      }
+
+      .form-panel,
+      .section {
+        padding: 13px;
+      }
+
+      .panel-title {
+        align-items: flex-start;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      h2 { font-size: 16px; }
+      h3 { font-size: 14px; }
+
+      .tag {
+        font-size: 11px;
+        padding: 4px 7px;
+      }
+
+      .field {
+        gap: 5px;
+        margin-bottom: 10px;
+      }
+
+      label {
+        font-size: 12px;
+      }
+
+      input,
+      select {
+        min-height: 40px;
+        padding: 8px 10px;
+        border-radius: 6px;
+      }
+
+      .mode-switch,
+      .tool-switch {
+        margin-bottom: 10px;
+      }
+
+      .top-tools {
+        gap: 6px;
+      }
+
+      .mode-switch button,
+      .tool-switch button {
+        min-height: 34px;
+        padding: 5px 8px;
+        font-size: 13px;
+      }
+
+      .language-toggle {
+        min-height: 34px;
+        padding: 5px 9px;
+        font-size: 12px;
+      }
+
+      .top-account {
+        padding: 9px;
+        margin-bottom: 10px;
+      }
+
+      .top-account #loginArea:not([hidden]) {
+        gap: 7px;
+      }
+
+      .top-account input,
+      .top-account .btn {
+        min-height: 34px;
+        font-size: 12px;
+      }
+
+      .top-account #loginArea .account-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 7px;
+      }
+
+      .top-account #accountArea:not([hidden]) {
+        gap: 7px;
+      }
+
+      .top-account .history-load {
+        min-width: 116px;
+      }
+
       .grid-two,
       .insight-grid,
       .report-grid,
@@ -1150,6 +1317,105 @@
       .timeline { grid-template-columns: repeat(auto-fit, minmax(54px, 1fr)); }
       .chart-art { min-height: 230px; }
       .wheel { inset: 26px; }
+
+      .result {
+        gap: 12px;
+      }
+
+      .report-grid {
+        gap: 10px;
+      }
+
+      .report {
+        min-height: auto;
+        padding: 12px;
+      }
+
+      .report-head {
+        margin-bottom: 7px;
+      }
+
+      .score {
+        min-width: 48px;
+        height: 28px;
+        font-size: 12px;
+      }
+
+      .report p,
+      .report ul,
+      .report ol {
+        font-size: 13px;
+        line-height: 1.58;
+      }
+
+      .report li {
+        margin: 4px 0;
+      }
+
+      .phone-digit-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(38px, 1fr));
+        gap: 5px;
+      }
+
+      .phone-digit {
+        min-width: 0;
+        padding: 5px 4px;
+        border-radius: 6px;
+        font-size: 14px;
+      }
+
+      .phone-digit small {
+        font-size: 9px;
+      }
+
+      .detail-box {
+        padding: 11px;
+      }
+
+      .detail-box p {
+        font-size: 13px;
+        line-height: 1.55;
+      }
+
+      .toast {
+        width: calc(100% - 24px);
+        bottom: 14px;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .app { padding-left: 8px; padding-right: 8px; }
+      h1 { font-size: 22px; }
+      .top-tools {
+        grid-template-columns: minmax(0, 1fr) auto;
+      }
+      .mode-switch {
+        grid-template-columns: repeat(2, minmax(48px, 1fr));
+        gap: 3px;
+        padding: 3px;
+      }
+      .mode-switch button {
+        min-height: 32px;
+        padding: 4px 5px;
+        font-size: 12px;
+      }
+      .language-toggle {
+        min-width: 64px;
+        padding: 4px 7px;
+      }
+      .tool-switch {
+        grid-template-columns: 1fr;
+      }
+      .top-account #loginArea .account-actions,
+      .actions {
+        grid-template-columns: 1fr;
+      }
+      .pillars { grid-template-columns: 1fr; }
+      .phone-digit-list {
+        grid-template-columns: repeat(auto-fit, minmax(34px, 1fr));
+      }
     }
   </style>
 </head>
@@ -1478,7 +1744,7 @@
               <button class="btn secondary" type="button" id="clearPhoneBtn" title="清空手机号">清空</button>
             </div>
           </form>
-          <p class="hint">已按课程资料接入后四位、旺衰、生克、刑冲合害和健康应事。</p>
+          <p class="hint">已接入后四位、后七位奇门、旺衰、生克、刑冲合害、特殊数组和流年应期。</p>
         </section>
 
         <section class="result">
@@ -1767,15 +2033,19 @@
       "清空手机号": "Clear phone number",
       "当前先按数字五行做基础分析；你发数据库后会接入完整断语和评分。": "For now, this uses basic digit-element analysis. After you send the database, full interpretations and scoring will be connected.",
       "已按课程资料接入后四位、旺衰、生克、刑冲合害和健康应事。": "Course rules are loaded: last four digits, strength, generation/control, branch relations and health signals.",
+      "已接入后四位、后七位奇门、旺衰、生克、刑冲合害、特殊数组和流年应期。": "Loaded: last four digits, Qimen last-seven positions, strength, generation/control, branch relations, special patterns and annual timing.",
       "手机号报告": "Phone Number Report",
       "数字预测报告": "Number Prediction Report",
       "流年应期": "Annual Timing",
       "职业环境": "Career & Environment",
+      "性格分析": "Personality",
       "健康伤灾": "Health & Injury",
       "位置应事": "Position Signals",
       "环境风水": "Environment",
       "奇门七位": "Qimen Seven Positions",
       "会发生": "Likely Events",
+      "实用预测": "Practical Signals",
+      "推断流程": "Reading Flow",
       "专业依据": "Technical Basis",
       "待输入": "Waiting",
       "输入手机号后显示数字五行分布和基础应事。": "Enter a phone number to show digit-element balance and basic event signals.",
@@ -1945,6 +2215,27 @@
           url: "D:\\BaiduNetdiskDownload\\04.九龙道长文字资料(6 0 0-60 0.co m )\\九龙道长八字必备知识点.pdf",
           channel: "本地PDF资料",
           status: "page-text-extracted"
+        },
+        {
+          id: "jiulong-bazi-self-disease-23",
+          title: "023【九龙道长】网络正课-23自己疾病1",
+          url: "C:\\Users\\Eric\\Downloads\\023-【九龙道长】网络正课-23自己疾病1-_笔记.docx",
+          channel: "本地Word资料",
+          status: "full-text-extracted"
+        },
+        {
+          id: "jiulong-bazi-flow-year-46",
+          title: "046【九龙道长】网络正课-46.流年断事1",
+          url: "C:\\Users\\Eric\\Downloads\\046-【九龙道长】网络正课-46.流年断事1__笔记.docx",
+          channel: "本地Word资料",
+          status: "full-text-extracted"
+        },
+        {
+          id: "jiulong-bazi-flow-year-47",
+          title: "047【九龙道长】网络正课-47.流年断事（2）",
+          url: "C:\\Users\\Eric\\Downloads\\047-【九龙道长】网络正课-47.流年断事（2）__笔记(2).docx",
+          channel: "本地Word资料",
+          status: "full-text-extracted"
         }
       ],
       rules: [
@@ -2262,13 +2553,13 @@
         },
         {
           id: "jiulong-full-reading-sequence",
-          topic: "批八字流程",
+          topic: "综合分析",
           priority: 96,
           when: { balance: ["balanced", "normal", "biased"] },
           scoreAdjust: 0,
-          tags: ["批八字流程", "过三关"],
+          tags: ["综合分析"],
           messages: {
-            report: "完整判断顺序为排盘过三关、分清日元强弱、取喜用忌凶、定格局层次，再看空亡墓库、六亲病症、财官夫妻、大运流年和十神缺失。",
+            report: "完整判断顺序为先分清日元强弱、取喜用忌凶、定格局层次，再看空亡墓库、六亲病症、财官夫妻、大运流年和十神缺失。",
             flow: "先强弱喜忌，再格局层次，最后落到六亲、病症、财官和大运流年。"
           }
         },
@@ -2326,7 +2617,7 @@
           priority: 93,
           when: { tenGodIncludes: ["杀", "印"] },
           scoreAdjust: -2,
-          tags: ["七杀偏印", "病症定位"],
+          tags: ["七杀偏印"],
           messages: {
             report: "疾病定位以五脏、宫位和十神同看：偏印多应经络淤堵和恢复系统，七杀多应实际病痛；落在哪个宫位，就牵动自己或对应六亲。",
             flow: "偏印看淤堵修复，七杀看实际痛点，再按宫位落到自己或亲人。"
@@ -2916,8 +3207,16 @@
       },
       specialPatternRules: [
         { id: "218", match: "contains", digits: "218", level: "risk", text: "218为绝命加五鬼的重风险组合，磁场衰败快，容易熬夜、情绪阴暗、物品损坏、健康和运势走低。" },
+        { id: "718-soft", match: "contains", digits: "718", level: "warning", text: "718在课程实验中表现为部分变黄变软，主状态变动、稳定性下降、事情有拖软和走弱迹象。" },
         { id: "314", match: "contains", digits: "314", level: "good", text: "314在案例中保持状态最好，主相对稳定、保存力强，适合把事情稳住。" },
+        { id: "13-justice", match: "contains", digits: "13", level: "note", text: "13组合有正义感和原则意识，容易看不惯不公平的事，也会因讲原则而得罪人。" },
+        { id: "39-popularity", match: "contains", digits: "39", level: "good", text: "39组合人缘较好，社交热度和对外吸引力增强，适合靠沟通、介绍、圈层资源打开局面。" },
+        { id: "813-brain-money", match: "contains", digits: "813", level: "good", text: "813组合主靠脑力、知识、策划、技术和判断赚钱，适合顾问、研究、玄学、方案和信息类收入。" },
+        { id: "3959-lazy-after-wealth", match: "contains", digits: "3959", level: "warning", text: "3959组合显示赚钱后容易懒散或节奏放慢，财富动力阶段性强，赚到后会想休息或转向享受。" },
+        { id: "big-wugui-stay-up", match: "containsAny", digits: ["18", "81"], level: "warning", text: "18/81带大五鬼熬夜信号，晚上想事多、睡眠不稳、灵感多但精神消耗也重。" },
         { id: "59-wealth", match: "endsWith", digits: "59", level: "good", text: "59结尾构成旺相偏财，常想赚钱、资源变现、房产投入或大额资金流动。" },
+        { id: "5813959-case", match: "contains", digits: "5813959", level: "good", text: "5813959为课程老板案例，偏财旺、常思考赚钱，适合易经玄学或顾问类破冰；也应熬夜、赚钱后懒散、手机故障和西南方潮湿破损、河流小路环境象。" },
+        { id: "1949072-salary", match: "contains", digits: "1949072", level: "note", text: "1949072为课程工资案例，固定工资可先看6100-6600附近区间；浮动收入者误差会放大。" },
         { id: "73-wealth", match: "endsWith", digits: "73", level: "good", text: "73结尾为财必来信号，遇木火流年流月更容易进财和客户上门。" },
         { id: "fertility-13-14", match: "endsWithAny", digits: ["13", "14"], level: "risk", text: "13/14结尾为食伤数组，遇死门、杜门或流年冲克时，女性生育、流产、子女健康信号增强。" },
         { id: "fertility-79", match: "endsWith", digits: "79", level: "risk", text: "79结尾带食伤与火金冲克，易应剖腹产、血光、呼吸系统或子女生产不顺。" },
@@ -2936,6 +3235,110 @@
         { id: "case-6444", match: "endsWith", digits: "6444", level: "risk", text: "6444木生火极旺，心脑血管、肝火、睡眠多梦、泌尿肾水和免疫力压力明显；事业有谋官、贵人和传播教育机会，但钱财外流、搬家频繁。" },
         { id: "case-1711", match: "endsWith", digits: "1711", level: "risk", text: "1711子水旺克午火，外向但婚姻差、桃花旺、脾气急又隐忍；心脏、近视、车祸、口舌、被盗和流动酒水行业信号明显。" }
       ],
+      phoneNumberTricks: [
+        { id: "trick-01", name: "绝招一 流产技巧", summary: "看倒二0、203/302、祸害夹0、食伤尾号、296和奇门流产数组。" },
+        { id: "trick-02", name: "绝招二 异性缘", summary: "看子午卯酉桃花、火木旺、人盘景门9、39人缘和水火互动。" },
+        { id: "trick-03", name: "绝招三 婚姻问题", summary: "看倒三倒二夫妻位生克、合冲刑害破绝、外合和中间同气。" },
+        { id: "trick-04", name: "绝招四 眼睛近视", summary: "看子午冲、水克火、午火受伤、93/49金木冲和火被压制。" },
+        { id: "trick-05", name: "绝招五 好色桃花", summary: "看桃花支集中、火旺水动、子午卯酉冲、1711等桃花欲望信号。" },
+        { id: "trick-06", name: "绝招六 小人", summary: "看六害、18子未害、金木相见、倒三倒二相害和外克内。" },
+        { id: "trick-07", name: "绝招七 投资", summary: "看本位生子位、土重、59偏财、73财必来、房产库存和破财数组。" },
+        { id: "trick-08", name: "绝招八 高血压", summary: "看火旺、水火冲克、子午冲、心脑血管位受伤和急躁睡眠信号。" },
+        { id: "trick-09", name: "绝招九 收入工资", summary: "看固定工资区间、59偏财、813脑力财、财位旺衰和项目收入波动。" },
+        { id: "trick-10", name: "绝招十 伤灾车祸手术", summary: "看寅申冲、卯酉冲、巳亥冲、火克金、79/69/296和血光器械象。" },
+        { id: "trick-11", name: "绝招十一 官司纠纷", summary: "看木克土、56/65天罗地网、五五自刑、丑未戌三刑和旺木克土。" },
+        { id: "trick-12", name: "绝招十二 环境设备", summary: "看九宫环境、95坟墓医院象、5辰土空亡、坤宫潮湿破损和手机故障。" },
+        { id: "trick-13", name: "绝招十三 流产具体年份", summary: "用冲克、三合补局和关键地支推应期，重点看申、酉、丑、巳、子午等年份月份。" }
+      ],
+      qimenPersonalityRules: {
+        stem: {
+          0: { name: "癸水", text: "聪明细腻、反应快，思想流动大，容易多想多变，也有经济头脑。" },
+          1: { name: "甲木", text: "仁慈心软、容易被感动，与佛道玄学有缘，同时有领导心态和主导欲。" },
+          2: { name: "乙木", text: "仁慈柔和、心软敏感，容易替别人着想；男性用号时胆量和决断会偏弱。" },
+          3: { name: "丙火", text: "急躁活跃、做事迅速，重礼貌和面子，爱表现，也容易虚荣讲排场。" },
+          4: { name: "丁火", text: "细腻重礼、爱美重打扮，有同情心，但情绪热度和好面子也明显。" },
+          5: { name: "戊土", text: "沉稳守信、喜静不喜动，耐性强、有度量，但反应慢半拍，容易固执己见。" },
+          6: { name: "己土", text: "厚重谨慎、能忍耐，重现实和稳定，做事偏慢，容易把压力憋在心里。" },
+          7: { name: "庚金", text: "重义轻财、讲义气，宁愿自己吃亏也要守规则；口才好，说话硬朗直接。" },
+          8: { name: "辛金", text: "讲原则、重分寸，表达能力不错，外表或审美较细，遇事容易挑细节。" },
+          9: { name: "壬水", text: "聪明、有经济头脑，反应快、喜动，想法变化迅速，适合靠信息和判断做事。" }
+        },
+        door: {
+          1: { name: "休门", text: "善于调整状态和利用人际关系，容易吸引同事、领导、老板类贵人；低迷时会消极、懒散、缺闯劲。" },
+          2: { name: "死门", text: "极端执着，决定后很难改变，容易先看到负面可能；也与玄学、房地产、神佛类事物有缘。" },
+          3: { name: "伤门", text: "能力强、竞争意识重，追求第一，说话直接犀利，适合市场、销售和冲锋型工作。" },
+          4: { name: "杜门", text: "内向寡言，不主动社交，需要别人带动交流；技术、专业、高科技、宗教易经类能力较强。" },
+          5: { name: "开门", text: "健谈外向，自来熟，藏不住秘密，事业心强，适合创业、开公司、开店和主动开拓。" },
+          7: { name: "惊门", text: "口才突出，善用语言解决问题，适合销售、翻译、外语、教育培训；也容易唠叨和口舌。" },
+          8: { name: "生门", text: "乐观好动、精力旺，心态豁达，适合经商；组合好且能量旺时财运表现更明显。" },
+          9: { name: "景门", text: "生活有条理，爱做计划，注重外表和形象，女性更爱化妆打扮；关联旅游、餐饮、电子设备。" }
+        },
+        star: {
+          1: { name: "天蓬星", text: "有冒险和赌性，敢在把握不足时拼一把，喜欢风险投资，格局好能赚大钱，格局差易亏。" },
+          2: { name: "天芮星", text: "问题意识强、学习能力强，同情心重，但抵抗力较弱，容易接触医务、维修或麻烦事。" },
+          3: { name: "天冲星", text: "闯劲强、效率高，讨厌拖拉，适合销售和市场；容易感情用事、急着推进。" },
+          4: { name: "天辅星", text: "博学、有涵养，擅长辅导、教化、做思想工作，适合教师、顾问、二把手位置。" },
+          5: { name: "天禽星", text: "忠厚老实、中正稳重，擅长平衡关系，忍耐力强，能默默积累后突然发力。" },
+          6: { name: "天心星", text: "有管理才能和策略能力，容易成为管理层或创业骨干；组合太阴时城府更深。" },
+          7: { name: "天柱星", text: "创新、敢破旧局，能独当一面，是团队骨干；做事不按套路，有时带破坏性。" },
+          8: { name: "天任星", text: "憨厚踏实、任劳任怨，忠诚度高，决定后不易改变，做事慢但能持久。" },
+          9: { name: "天英星", text: "热情、重礼节和形象，做事风风火火，但容易三分钟热度，开始快结束也快。" }
+        },
+        spirit: {
+          1: { name: "值符", text: "天然领导力强，主见强，喜欢为别人做决定；过重时会自我、自负。" },
+          2: { name: "腾蛇", text: "聪明、思维跳跃、善变，工作、想法、收入和事业容易持续变化。" },
+          3: { name: "太阴", text: "喜欢深度思考，分析细致，容易遇暗中贵人，也容易招小人或灰色收入红包。" },
+          4: { name: "六合", text: "人缘好，擅长维护关系，合作多，交际圈广，容易赚大众钱或出现多份收入。" },
+          5: { name: "白虎", text: "能力强、效率高，压力也大；女性更显职场强势，喜欢挑战性任务。" },
+          6: { name: "玄武", text: "聪明且善于掩饰，忽悠能力强；能量强时会说服别人，组合差时容易被人忽悠或犯小人。" },
+          7: { name: "九地", text: "踏实稳重、守财，重稳定和长期积累，行动慢但能守住资源。" },
+          8: { name: "九天", text: "好动、外出多，有远见，喜欢速战速决、快速成功，也容易出现异地恋或远方关系。" }
+        }
+      },
+      qimenHealthRules: {
+        palace: {
+          1: { name: "坎宫", text: "疾病部位先看肾、膀胱、泌尿系统、生殖系统、血液和内分泌。" },
+          2: { name: "坤宫", text: "疾病部位先看腹部、脾胃、右肩、女性生殖器和消化系统。" },
+          3: { name: "震宫", text: "疾病部位先看足部、肝胆、左肋和左肩。" },
+          4: { name: "巽宫", text: "疾病部位先看左肩、肝胆、神经和木气相关筋络。" },
+          5: { name: "中宫归坤", text: "疾病部位多落腹部、脾胃、消化、中焦积滞和慢性堵塞。" },
+          6: { name: "乾宫", text: "疾病部位先看头部、前额、腿部和筋骨压力。" },
+          7: { name: "兑宫", text: "疾病部位先看腹部区域、口腔、咽喉和呼吸入口。" },
+          8: { name: "艮宫", text: "疾病部位先看腿脚、鼻部、男性生殖系统和慢性阻滞。" },
+          9: { name: "离宫", text: "疾病部位先看眼睛、头部、心脏、血压和血液系统。" }
+        },
+        door: {
+          1: { name: "休门", text: "病势偏休眠或修复期，身体容易倦怠、懒散，恢复靠休息调养。" },
+          2: { name: "死门", text: "病势偏难治，容易拖成顽固问题、留疤、功能下降或性质转变。" },
+          3: { name: "伤门", text: "病势带伤灾、开刀、破损和消耗，容易有手术、外伤或急性损害。" },
+          4: { name: "杜门", text: "病势隐蔽难查，容易应血栓、梗塞、痴呆、堵塞或久查不明。" },
+          5: { name: "开门", text: "病情相对明朗，检查结果容易显现，问题比杜门更容易定位。" },
+          7: { name: "惊门", text: "病势容易应心慌、心律不齐、惊悸、呼吸系统和口腔咽喉问题。" },
+          8: { name: "生门", text: "恢复力较强、修复快，但若天芮星同动，也可能表示病情继续生长发展。" },
+          9: { name: "景门", text: "病势容易应发烧、炎症、心脑血管、血压波动，衰时也看烫伤烧伤。" }
+        },
+        star: {
+          1: { name: "天蓬星", text: "疾病类型偏流动变化，常看肝肾、糖尿病、代谢和病情反复。" },
+          2: { name: "天芮星", text: "天芮为疾病主星，重点定位病灶和病根，健康信号会被明显放大。" },
+          3: { name: "天冲星", text: "疾病类型偏突发、发展快，容易突然发作，需要看急症、外伤和快速变化。" },
+          4: { name: "天辅星", text: "疾病类型偏传染、感染、神经类、风湿感冒和反复外感。" },
+          5: { name: "天禽星", text: "疾病类型偏中焦和综合问题，也要看呼吸、脑部和全身性牵连。" },
+          6: { name: "天心星", text: "疾病类型偏西医检查、脑部、头部、神经系统和需要器械检查的问题。" },
+          7: { name: "天柱星", text: "疾病类型偏咽喉、支气管、呼吸通道、声音和口舌相关。" },
+          8: { name: "天任星", text: "疾病类型偏慢性稳定发展，常由长期劳累、拖延和积压形成。" },
+          9: { name: "天英星", text: "疾病类型偏高血压、虚症、心火、发热和情绪急躁引起的波动。" }
+        },
+        spirit: {
+          1: { name: "值符", text: "病情容易需要名医、权威医生或大医院介入；同见天芮时头部重病信号加重。" },
+          2: { name: "腾蛇", text: "病情容易反复缠绕，常看精神紊乱、失眠、多梦和磁场扰动。" },
+          3: { name: "太阴", text: "病情偏隐疾，难一次查清，也看呼吸系统、暗病和体内阴性问题。" },
+          4: { name: "六合", text: "病情容易多病共存、并发症、综合症，治疗花费和牵连事项也会增多。" },
+          5: { name: "白虎", text: "病情带伤灾、开刀、肿瘤或大病信号，但要结合门星和数组综合判断。" },
+          6: { name: "玄武", text: "病情诊断不明，常看血液、泌尿、肾水、生殖和隐性病灶。" },
+          7: { name: "九地", text: "病情偏慢性、先天、低血压、长期体弱和恢复慢。" },
+          8: { name: "九天", text: "病情偏急症、上冲、高血压、多动、突发和发展快。" }
+        }
+      },
       careerRules: {
         木: "木旺多应交易、木材建材、花卉绿化、口才、人脉和带团队。",
         火: "火旺多应教育、文化、讲师、互联网、传播、学校、名气和高学历。",
@@ -3285,6 +3688,172 @@
       return uniqueList(signals.map((item) => item.text)).slice(0, 6).map((text, index) => ({ id: `env-${index}`, level: "note", text }));
     }
 
+    function phoneBranchYears(targetBranches, pastYears = 12, futureYears = 10) {
+      const targets = new Set(targetBranches.filter(Boolean));
+      if (!targets.size) return [];
+      const currentYear = new Date().getFullYear();
+      const years = [];
+      for (let year = currentYear - pastYears; year <= currentYear + futureYears; year += 1) {
+        const pillar = yearPillar(new Date(year, 6, 1));
+        if (targets.has(pillar.branch)) years.push(`${year}${pillar.text}`);
+      }
+      return years;
+    }
+
+    function phonePracticalSignals(allDigits, primaryDigits, qimenCells, cells, profile, voidSignals) {
+      const allText = allDigits.join("");
+      const primaryText = primaryDigits.join("");
+      const signals = [];
+      const add = (id, text) => signals.push({ id, level: "note", text });
+      const containsAny = (items) => items.some((item) => allText.includes(item) || primaryText.includes(item));
+      const endsWithAny = (items) => items.some((item) => allText.endsWith(item) || primaryText.endsWith(item));
+      const cellLabel = (cell) => cell ? `${cell.position.name}${cell.digit}${cell.branch}${cell.element}` : "";
+      const qimenEightDoor = qimenCells.find((cell) => cell.reverseIndex === 3);
+      const qimenEarth = qimenCells.find((cell) => cell.reverseIndex === 1);
+      const qimenPalace = qimenCells.find((cell) => cell.reverseIndex === 7);
+      const qimenSelf = qimenCells.find((cell) => cell.reverseIndex === 2);
+      const father = cells.find((cell) => cell.position.index === 1);
+      const self = cells.find((cell) => cell.position.index === 2);
+      const child = cells.find((cell) => cell.position.index === 3);
+      const ancestor = cells.find((cell) => cell.position.index === 0);
+      const branchText = cells.map((cell) => cell.branch).join("");
+      const fireCount = profile.counts.火 || 0;
+      const waterCount = profile.counts.水 || 0;
+      const woodCount = profile.counts.木 || 0;
+      const earthCount = profile.counts.土 || 0;
+      const metalCount = profile.counts.金 || 0;
+      const relationHits = [];
+      for (let i = 0; i < cells.length; i += 1) {
+        for (let j = i + 1; j < cells.length; j += 1) {
+          const relation = phoneBranchPairRelation(cells[i].branch, cells[j].branch);
+          if (relation) relationHits.push({ ...relation, left: cells[i], right: cells[j] });
+        }
+      }
+      const relationsOf = (types) => relationHits.filter((item) => types.includes(item.type));
+      const relationPhrase = (items, limit = 2) => items.slice(0, limit).map((item) => `${cellLabel(item.left)}与${cellLabel(item.right)}${item.type}`).join("、");
+      const peachCount = cells.filter((cell) => ["子", "午", "卯", "酉"].includes(cell.branch)).length;
+      const secondFromEnd = allDigits[allDigits.length - 2] || "";
+      const zeroBetween = allText.match(/2(0+)3/);
+
+      const fertilityReasons = [];
+      if (secondFromEnd === "0") fertilityReasons.push("倒数第二位为0，女性号按70-80%生育中断、妇科或腹部关口看");
+      if (endsWithAny(["203", "302"])) fertilityReasons.push("203/302结尾，流产和子女健康信号很重");
+      if (zeroBetween?.[1]?.length) fertilityReasons.push(`2和3之间夹${zeroBetween[1].length}个0，常按约${zeroBetween[1].length}次生育中断或子女事件看`);
+      if (secondFromEnd === "3" || qimenSelf?.digit === "3") fertilityReasons.push("3寅木落自身/腹部位，逢申年申月冲寅时容易应腹部、子宫或子女关口");
+      if (endsWithAny(["204", "122", "221", "123", "13", "14", "79", "92"]) || containsAny(["258", "279", "458", "296"])) fertilityReasons.push("命中食伤、绝命或奇门流产数组，要叠加年龄和流年冲合断");
+      if (branchText.includes("子") && branchText.includes("午")) fertilityReasons.push("子午冲动到孩子、火象和交通发动机，也会牵出生育风险");
+      if (fertilityReasons.length) add("trick-01-fertility", `流产/妇科：${fertilityReasons.slice(0, 3).join("；")}。`);
+
+      const romanceReasons = [];
+      if (peachCount >= 2) romanceReasons.push(`后四位见${peachCount}个桃花支`);
+      if (fireCount >= 2) romanceReasons.push("火旺带热情、曝光、邀约和异性注意");
+      if (woodCount >= 2 || allText.includes("39")) romanceReasons.push("木气/39带人缘、聊天、介绍和圈层互动");
+      if (qimenEightDoor?.digit === "9") romanceReasons.push("倒三八门见9景门，表达外放、人际热");
+      if (romanceReasons.length) add("trick-02-romance", `异性缘：异性缘偏旺，${romanceReasons.join("，")}，会出现邀约、暧昧、客户缘或社交破冰。`);
+
+      const coupleRelation = father && self ? phoneBranchPairRelation(father.branch, self.branch) : null;
+      const outerRelation = ancestor && child ? phoneBranchPairRelation(ancestor.branch, child.branch) : null;
+      const partnerOuterCombine = relationHits.some((item) => item.type === "合" && (item.left === father || item.right === father) && item.left !== self && item.right !== self);
+      const marriageReasons = [];
+      if (father && self && phonePairIsControl(father, self)) marriageReasons.push(`${cellLabel(father)}与${cellLabel(self)}相克，夫妻或合作容易互相不服`);
+      if (coupleRelation && ["冲", "刑", "破", "害", "绝"].includes(coupleRelation.type)) marriageReasons.push(`倒三倒二成${coupleRelation.type}，会有争吵、冷战、分居或现实拉扯`);
+      if (outerRelation && ["冲", "刑", "破", "害", "绝"].includes(outerRelation.type)) marriageReasons.push(`两头也成${outerRelation.type}，外部家庭和结果位会加重婚姻压力`);
+      if (father && self && father.element === self.element) marriageReasons.push("中间同五行，双方各持己见，理念冲突明显");
+      if (partnerOuterCombine) marriageReasons.push("配偶/合作位与外部相合，容易有第三方、外部合作或外情牵动");
+      if (!marriageReasons.length && father && self && (phonePairGenerates(father, self) || phonePairGenerates(self, father))) marriageReasons.push("倒三倒二相生，争执后仍会被现实利益或感情牵回");
+      if (marriageReasons.length) add("trick-03-marriage", `婚姻合作：${marriageReasons.slice(0, 3).join("；")}。`);
+
+      const eyeReasons = [];
+      if (branchText.includes("子") && branchText.includes("午")) eyeReasons.push("子午冲");
+      if (waterCount && fireCount) eyeReasons.push("水火相见，火被压时眼睛和心火先受影响");
+      if (profile.statuses.火 === "死" || profile.statuses.火 === "囚") eyeReasons.push(`火处${profile.statuses.火}地`);
+      if (containsAny(["93", "49"])) eyeReasons.push("93/49金木相冲带近视、肝胆和神经紧绷");
+      if (eyeReasons.length) add("trick-04-eye", `眼睛近视：${eyeReasons.join("，")}，容易眼疲劳、近视加深、干涩或心火睡眠连带不稳。`);
+
+      const desireReasons = [];
+      if (peachCount >= 3) desireReasons.push("子午卯酉桃花集中");
+      if (fireCount >= 2 && (waterCount || woodCount)) desireReasons.push("火旺又得水木牵动，欲望和新鲜感强");
+      if (relationsOf(["冲", "破"]).some((item) => ["子", "午", "卯", "酉"].includes(item.left.branch) || ["子", "午", "卯", "酉"].includes(item.right.branch))) desireReasons.push("桃花支被冲破，容易烂桃花或情绪化关系");
+      if (allText.includes("1711")) desireReasons.push("1711桃花旺但婚姻压力也重");
+      if (desireReasons.length) add("trick-05-desire", `桃花欲望：${desireReasons.join("，")}，容易有暧昧、外情、冲动邀约或感情纠纷。`);
+
+      const harmHits = relationsOf(["害"]);
+      const smallPeopleReasons = [];
+      if (harmHits.length) smallPeopleReasons.push(`${relationPhrase(harmHits)}，六害主被人暗中使坏`);
+      if (allText.endsWith("18") || primaryText.endsWith("18")) smallPeopleReasons.push("18结尾为子未害，下属、客户或尾款处易出小人");
+      if (metalCount && woodCount) smallPeopleReasons.push("金木相见，口舌、规则、挑剔评价和合同压力明显");
+      if (father && self && phoneBranchPairRelation(father.branch, self.branch)?.type === "害") smallPeopleReasons.push("倒三倒二相害，领导、伴侣或合作方容易暗中牵制");
+      if (smallPeopleReasons.length) add("trick-06-small-people", `小人：${smallPeopleReasons.slice(0, 3).join("；")}。`);
+
+      const investReasons = [];
+      if (self && child && phonePairGenerates(self, child)) investReasons.push(`${cellLabel(self)}生${cellLabel(child)}，钱和精力会往项目、子女、下属或扩张处走`);
+      if (earthCount >= 2) investReasons.push("土重，钱容易压到房产、库存、固定资产和长期项目");
+      if (allText.includes("59") || primaryText.endsWith("59")) investReasons.push("59偏财，常想资源变现和大额资金运作");
+      if (primaryText.endsWith("73") || allText.endsWith("73")) investReasons.push("73财必来，容易有进财机会后继续投入");
+      if (containsAny(["69", "96"])) investReasons.push("69/96破财数组，投资、维修、罚款或钱财外流会同时出现");
+      if (investReasons.length) add("trick-07-invest", `投资破财：${investReasons.slice(0, 3).join("；")}。`);
+
+      const pressureReasons = [];
+      if (fireCount >= 2) pressureReasons.push("火旺");
+      if (branchText.includes("子") && branchText.includes("午")) pressureReasons.push("子午冲");
+      if (waterCount && fireCount) pressureReasons.push("水火冲克");
+      if (allText.includes("1711") || allText.includes("6444")) pressureReasons.push("案例型心脑血管和睡眠信号");
+      if (pressureReasons.length) add("trick-08-blood-pressure", `高血压心火：${pressureReasons.join("，")}，容易血压波动、心火急躁、睡眠浅、心律不齐或头晕眼胀。`);
+
+      let salaryText = "";
+      if (allText.includes("1949072")) {
+        salaryText = "固定工资可先看6100-6600附近区间；这个数组来自课程工资案例，浮动收入者误差会放大。";
+      } else if (allText.includes("59") || primaryText.endsWith("59")) {
+        salaryText = "固定工资之外常有资源变现、大额资金、房产投入或老板型收入；断收入要把工资和项目钱分开。";
+      } else if (allText.includes("813")) {
+        salaryText = "813主靠脑力、知识、策划、技术、玄学、顾问、研究和信息判断赚钱，项目收入比死工资更明显。";
+      } else if (self && ["旺", "相"].includes(self.status)) {
+        salaryText = `${cellLabel(self)}财位${self.status}，赚钱承接力较强，容易有回款、客户、固定工资提升或项目收入。`;
+      } else if (father && self && controlsElement(father.element, self.element)) {
+        salaryText = `${cellLabel(father)}克${cellLabel(self)}，财位被领导、合同、配偶、家庭或身体问题压住，收入容易延迟或被占用。`;
+      } else {
+        salaryText = "";
+      }
+      if (salaryText) add("trick-09-income", `收入工资：${salaryText}`);
+
+      const injuryReasons = [];
+      const clashHits = relationsOf(["冲", "绝"]);
+      if (clashHits.length) injuryReasons.push(`${relationPhrase(clashHits)}，冲绝主动、撞击、决裂和突发变化`);
+      if (containsAny(["79", "69", "296"])) injuryReasons.push("79/69/296带火金、绝命或生产手术血光象");
+      if (fireCount && metalCount) injuryReasons.push("火金相见，器械、刀金、剖腹产、呼吸或磕碰信号增强");
+      if (allText.includes("1711")) injuryReasons.push("1711有车祸、心火受克和口舌被盗象");
+      if (injuryReasons.length) add("trick-10-injury", `伤灾车祸手术：${injuryReasons.slice(0, 3).join("；")}。`);
+
+      const lawsuitReasons = [];
+      if (woodCount && earthCount) lawsuitReasons.push("木土相见，纠纷、规则卡点、脾胃压力和历史问题容易出现");
+      if (containsAny(["56", "65"])) lawsuitReasons.push("56/65为天罗地网，容易被合同、官司、家庭矛盾或现实压力困住");
+      if (allText.includes("55") || primaryText.includes("55")) lawsuitReasons.push("五五自刑，旧问题反复，诉讼处罚信号加重");
+      const punishmentHits = relationsOf(["刑", "害", "破"]);
+      if (punishmentHits.length) lawsuitReasons.push(`${relationPhrase(punishmentHits)}，会带出口舌、破财、陷害或处罚`);
+      if (lawsuitReasons.length) add("trick-11-lawsuit", `官司纠纷：${lawsuitReasons.slice(0, 3).join("；")}。`);
+
+      const envReasons = [];
+      if (allText.includes("95")) envReasons.push("95应坟地、医院、旧场地、道路石头或阴性气场");
+      if (qimenPalace?.digit === "2" && ["5", "8", "9"].some((digit) => allText.includes(digit))) envReasons.push("九宫见2坤宫又见5/8/9，西南方易有潮湿破损、河流、小路或墙面问题");
+      if (allText.includes("5") && voidSignals.some((item) => item.text.includes("辰"))) envReasons.push("5辰土遇空亡，手机、设备、墙面、存储资料或固定物件易坏");
+      if (qimenEarth?.digit === "9" && allText.includes("5")) envReasons.push("地盘9配5，常思考赚钱，环境也容易出现水路与土墙同象");
+      if (allText.includes("5813959")) envReasons.push("5813959老板案例见熬夜、手机故障和西南潮湿破损");
+      if (envReasons.length) add("trick-12-environment", `环境设备：${envReasons.slice(0, 3).join("；")}。`);
+
+      const timingBranches = new Set();
+      if (fertilityReasons.length) ["申", "酉", "丑", "巳"].forEach((branch) => timingBranches.add(branch));
+      if (secondFromEnd === "3" || primaryText.includes("3")) timingBranches.add("申");
+      if (branchText.includes("子") && branchText.includes("午")) ["子", "午"].forEach((branch) => timingBranches.add(branch));
+      if (branchText.includes("巳") && branchText.includes("亥")) ["巳", "亥"].forEach((branch) => timingBranches.add(branch));
+      if (containsAny(["203", "302", "204", "122", "221", "123", "296", "258", "279", "458"])) ["申", "酉", "丑", "巳"].forEach((branch) => timingBranches.add(branch));
+      const timingYears = phoneBranchYears([...timingBranches], 12, 10);
+      if (fertilityReasons.length && timingBranches.size) {
+        add("trick-13-fertility-year", `流产具体年份：重点看${[...timingBranches].join("、")}年/月，近年应期可落在${timingYears.slice(0, 8).join("、") || "对应地支年份"}，这些时间会冲到腹部、子女、火水位或补成生产关口。`);
+      }
+
+      return signals;
+    }
+
     function phoneVoidSignals(cells) {
       const today = dayPillar(new Date());
       const empty = emptyBranches(today).split("");
@@ -3414,6 +3983,48 @@
       ];
     }
 
+    function phonePersonalitySignals(profile, cells, qimenCells) {
+      const rules = numberKnowledgeBase.qimenPersonalityRules;
+      const signals = [];
+      const qimenSelf = qimenCells.find((cell) => cell.reverseIndex === 2);
+      const qimenDoor = qimenCells.find((cell) => cell.reverseIndex === 3);
+      const qimenStar = qimenCells.find((cell) => cell.reverseIndex === 4);
+      const qimenSpirit = qimenCells.find((cell) => cell.reverseIndex === 5);
+      const addRule = (id, label, cell, group) => {
+        const rule = cell && rules[group]?.[cell.digit];
+        if (!rule) return;
+        signals.push({
+          id,
+          level: "note",
+          text: `${label}${cell.digit}${rule.name}：${rule.text}`
+        });
+      };
+      addRule("personality-stem", "用神倒二", qimenSelf, "stem");
+      addRule("personality-door", "八门倒三", qimenDoor, "door");
+      addRule("personality-star", "九星倒四", qimenStar, "star");
+      addRule("personality-spirit", "八神倒五", qimenSpirit, "spirit");
+
+      const hiddenStem = qimenCells.find((cell) => cell.reverseIndex === 6);
+      if (hiddenStem?.digit === "9" && qimenSpirit?.digit === "2") {
+        signals.push({ id: "personality-ren-snake", level: "note", text: "壬水暗干配腾蛇：聪明反应快，思维跳跃，别人不容易跟上节奏，想法、工作或收入容易变化。" });
+      }
+      const yangCount = cells.filter((cell) => cell.yinYang === "阳").length;
+      const yinCount = cells.length - yangCount;
+      if (yangCount >= 3) signals.push({ id: "personality-yang", level: "note", text: "后四位阳数偏多：处事外放、主观强，容易急着推进、顶撞或强势决策。" });
+      if (yinCount >= 3) signals.push({ id: "personality-yin", level: "note", text: "后四位阴数偏多：处事内敛、想得多，容易犹豫、拖延，需要外界推动才行动。" });
+      if ((profile.counts[profile.strongest] || 0) >= 3) {
+        const traits = {
+          木: "木气过旺：讲义气、重人情和扩张，但容易固执、挑剔、计划太多。",
+          火: "火气过旺：热情急躁、爱表现、重面子，容易虚荣、桃花旺和三分钟热度。",
+          土: "土气过旺：稳重能忍、重现实，但反应慢、固执，严重时会显得精明算计。",
+          金: "金气过旺：讲规则、执行力强、说话硬，容易挑剔、口舌和不服软。",
+          水: "水气过旺：聪明灵活、信息感强，容易善变、多想、情绪和关系流动。"
+        };
+        signals.push({ id: "personality-over-element", level: "note", text: traits[profile.strongest] });
+      }
+      return uniqueList(signals.map((item) => item.text)).slice(0, 7).map((text, index) => ({ id: `personality-${index}`, level: "note", text }));
+    }
+
     function phoneCurrentYearBranch(date = new Date()) {
       const year = date.getFullYear();
       const ziIndex = branches.indexOf("子");
@@ -3512,14 +4123,90 @@
       return uniqueList(predictions).slice(0, 8);
     }
 
-    function phoneHealthRiskList(controlSignals, patternSignals, profile) {
-      const risks = [];
-      controlSignals.forEach((item) => {
-        if (item.event?.body) risks.push(`${item.key}主${item.event.body}，对应位置在${item.controlled.position.name}，会先应${item.controlled.position.people}或${item.controlled.position.body}。`);
-      });
-      patternSignals.filter((item) => item.id === "pure" || item.level === "risk").forEach((item) => risks.push(item.text));
-      if (!risks.length) risks.push(`${profile.strongest}旺但未见明显重克，健康风险以${phoneEventText(profile.strongest, "health").replace(/^身体状态多应/, "")}为主。`);
-      return uniqueList(risks).slice(0, 5);
+    function phoneQimenHealthSignals(qimenCells, profile) {
+      const rules = numberKnowledgeBase.qimenHealthRules;
+      const signals = [];
+      const palace = qimenCells.find((cell) => cell.reverseIndex === 7);
+      const hidden = qimenCells.find((cell) => cell.reverseIndex === 6);
+      const spirit = qimenCells.find((cell) => cell.reverseIndex === 5);
+      const star = qimenCells.find((cell) => cell.reverseIndex === 4);
+      const door = qimenCells.find((cell) => cell.reverseIndex === 3);
+      const self = qimenCells.find((cell) => cell.reverseIndex === 2);
+      const addRule = (id, label, cell, group, level = "warning") => {
+        const rule = cell && rules[group]?.[cell.digit];
+        if (!rule) return;
+        signals.push({ id, level, text: `${label}${cell.digit}${rule.name}：${rule.text}` });
+      };
+
+      if (star?.digit === "2" && palace && rules.palace?.[palace.digit]) {
+        signals.push({
+          id: "health-tianrui-palace",
+          level: "risk",
+          text: `倒四2天芮星为疾病主星，倒七${palace.digit}${rules.palace[palace.digit].name}定位病灶：${rules.palace[palace.digit].text}`
+        });
+      } else {
+        addRule("health-palace", "倒七九宫", palace, "palace");
+      }
+      addRule("health-door", "倒三八门", door, "door", ["2", "3", "4", "7", "9"].includes(door?.digit) ? "risk" : "warning");
+      addRule("health-star", "倒四九星", star, "star", ["2", "3", "9"].includes(star?.digit) ? "risk" : "warning");
+      addRule("health-spirit", "倒五八神", spirit, "spirit", ["2", "4", "5", "6", "8"].includes(spirit?.digit) ? "risk" : "warning");
+
+      if (self?.digit === "2") {
+        signals.push({ id: "health-doctor-hospital", level: "warning", text: "倒二用神见2，乙象医生/医院，健康事件容易落到检查、问诊、治疗或医院往来。" });
+      }
+      if (hidden?.digit === "9" && spirit?.digit === "2") {
+        signals.push({ id: "health-ren-snake-sleep", level: "risk", text: "隐干9壬水配腾蛇，容易精神紧张、失眠多梦、思维停不下来，病情也有反复缠绕象。" });
+      }
+      if (door?.digit === "3" && spirit?.digit === "5") {
+        signals.push({ id: "health-hurt-white-tiger", level: "risk", text: "伤门遇白虎，伤灾、开刀、血光、肿块或大病信号加重，需结合火金冲克和流年应期看。" });
+      }
+      if (door?.digit === "4" && ["3", "6"].includes(spirit?.digit)) {
+        signals.push({ id: "health-hidden-unclear", level: "risk", text: "杜门配太阴/玄武，病灶隐蔽、诊断不明，容易反复检查才找到原因，重点看血栓、梗塞、血液泌尿和呼吸暗病。" });
+      }
+      if (door?.digit === "9" || star?.digit === "9" || spirit?.digit === "8") {
+        signals.push({ id: "health-fire-pressure", level: "risk", text: "景门/天英/九天动，心脑血管、高血压、发热炎症、急症和情绪急躁带来的身体波动会更明显。" });
+      }
+      return uniqueList(signals.map((item) => item.text)).slice(0, 8).map((text, index) => ({ id: `qimen-health-${index}`, level: "warning", text }));
+    }
+
+    function phoneHealthRiskList(qimenHealthSignals = []) {
+      return uniqueList(qimenHealthSignals.map((item) => item.text)).slice(0, 8);
+    }
+
+    function phoneProcessSteps({ digits, primaryDigits, qimenCells, profile, cells, controlSignals, branchSignals, patternSignals, yearSignals, voidSignals, predictions }) {
+      const mapping = cells.map((cell) => `${cell.digit}=${cell.branch}${cell.element}${cell.yinYang}/${cell.position.name}`).join("，");
+      const qimenText = qimenCells.map((cell) => `${cell.position.name}${cell.digit}`).join("，");
+      const missing = elementCycle.filter((element) => !profile.counts[element]);
+      const controlText = controlSignals.length
+        ? controlSignals.slice(0, 3).map((item) => item.text.replace(/。$/g, "")).join("；")
+        : "后四位没有明显重克，事情先按主旺五行和位置宫位推进";
+      const branchText = branchSignals.length
+        ? branchSignals.slice(0, 3).map((item) => item.text.replace(/。$/g, "")).join("；")
+        : "地支未见明显冲刑破害，突发变化少一些";
+      const specialSignals = patternSignals.filter((item) =>
+        item.id?.startsWith("special-") ||
+        item.id?.startsWith("fertility-") ||
+        item.id?.startsWith("wealth-") ||
+        item.id?.startsWith("qimen-") ||
+        item.id?.startsWith("void-")
+      );
+      const specialText = specialSignals.length
+        ? specialSignals.slice(0, 4).map((item) => item.text.replace(/。$/g, "")).join("；")
+        : "未命中特殊数组，按常规五行、生克和地支关系断";
+      const timingText = [...yearSignals, ...voidSignals].length
+        ? [...yearSignals, ...voidSignals].slice(0, 3).map((item) => item.text.replace(/。$/g, "")).join("；")
+        : "当前流年没有直接冲合关键位，先看号码本身格局";
+      return [
+        `取数：号码共${digits.length}位，先取后四位${primaryDigits.join("")}断当前主磁场，再取后七位${qimenCells.map((cell) => cell.digit).join("") || primaryDigits.join("")}补奇门细节。`,
+        `转象：${mapping}。0/1为水，2/5/8为土，3/4为木，6/7为火，9为金。`,
+        `定位：倒四看祖位和外部环境，倒三看父位、人际和能力，倒二看本位/财位/配偶，倒一看子位、下属、资产和结果。`,
+        `旺衰：${profile.strongest}为旺，${profile.weakest}最弱；${elementCycle.map((element) => `${element}${profile.counts[element] || 0}`).join("、")}；缺${missing.length ? missing.join("、") : "无明显缺项"}。`,
+        `生克：${controlText}。`,
+        `刑冲合害：${branchText}。`,
+        `特殊数组：${specialText}。`,
+        `奇门后七位：${qimenText || "号码不足七位，先以后四位为主"}；${timingText}。`,
+        `结论落点：${predictions.slice(0, 3).map((text) => text.replace(/。$/g, "")).join("；")}。`
+      ];
     }
 
     function generatePhoneReport(event) {
@@ -3544,6 +4231,9 @@
       const wealthTimingSignals = phoneWealthTimingSignals(cells);
       const environmentSignals = phoneEnvironmentSignals(cells, digits);
       const voidSignals = phoneVoidSignals(cells);
+      const practicalSignals = phonePracticalSignals(digits, primaryDigits, qimenCells, cells, profile, voidSignals);
+      const qimenHealthSignals = phoneQimenHealthSignals(qimenCells, profile);
+      const personalitySignals = phonePersonalitySignals(profile, cells, qimenCells);
       const careerSignals = phoneCareerPersonalitySignals(profile, cells);
       const timingSignals = [...yearSignals, ...voidSignals];
       const patternSignals = [
@@ -3554,7 +4244,9 @@
         ...phoneLawsuitSignals(cells, controlSignals),
         ...wealthTimingSignals,
         ...fertilitySignals,
+        ...qimenHealthSignals,
         ...phoneSpecialPatternSignals(digits, primaryDigits),
+        ...practicalSignals,
         ...qimenSignals,
         ...voidSignals,
         ...yearSignals
@@ -3562,11 +4254,12 @@
       const score = phoneScore(profile, cells, controlSignals, branchSignals, patternSignals);
       const lastCell = cells[cells.length - 1];
       const predictions = phonePredictionList(focus, profile, cells, controlSignals, branchSignals, patternSignals);
-      const healthRisks = phoneHealthRiskList(controlSignals, patternSignals, profile);
+      const healthRisks = phoneHealthRiskList(qimenHealthSignals);
       const positionTexts = cells.map((cell) => `${cell.position.name}${cell.digit}${cell.branch}${cell.element}为${cell.status}，${cell.position.use}，身体落${cell.position.body}。`);
       const qimenTexts = phoneQimenPositionTexts(qimenCells);
       const useGodText = phoneUseGodText(cells);
       const statusText = elementCycle.map((element) => `${element}${profile.counts[element] || 0}个/${profile.statuses[element]}`).join("，");
+      const processSteps = phoneProcessSteps({ digits, primaryDigits, qimenCells, profile, cells, controlSignals, branchSignals, patternSignals, yearSignals, voidSignals, predictions });
       document.getElementById("phoneStatusTag").textContent = `${score}分`;
       document.getElementById("phoneReport").innerHTML = `
         <div class="phone-summary-grid">
@@ -3578,10 +4271,18 @@
         <div class="report-grid" style="margin-top:12px">
           <article class="report highlight">
             <div class="report-head"><h3>会发生</h3><div class="score">${score}</div></div>
-            <ul>${predictions.slice(0, 6).map((text) => `<li>${escapeHtml(text)}</li>`).join("")}</ul>
+            <ul>${predictions.slice(0, 8).map((text) => `<li>${escapeHtml(text)}</li>`).join("")}</ul>
+          </article>
+          ${practicalSignals.length ? `<article class="report highlight">
+            <div class="report-head"><h3>实用预测</h3><div class="score">${practicalSignals.length}</div></div>
+            <ul>${practicalSignals.map((item) => `<li>${escapeHtml(item.text)}</li>`).join("")}</ul>
+          </article>` : ""}
+          <article class="report">
+            <div class="report-head"><h3>性格分析</h3><div class="score">${personalitySignals.length}</div></div>
+            <ul>${personalitySignals.map((item) => `<li>${escapeHtml(item.text)}</li>`).join("")}</ul>
           </article>
           <article class="report">
-            <div class="report-head"><h3>健康伤灾</h3><div class="score">${controlSignals.length}</div></div>
+            <div class="report-head"><h3>健康伤灾</h3><div class="score">${healthRisks.length}</div></div>
             <ul>${healthRisks.map((text) => `<li>${escapeHtml(text)}</li>`).join("")}</ul>
           </article>
           <article class="report">
@@ -3599,6 +4300,10 @@
           <article class="report">
             <div class="report-head"><h3>环境风水</h3><div class="score">${environmentSignals.length}</div></div>
             <ul>${environmentSignals.length ? environmentSignals.map((item) => `<li>${escapeHtml(item.text)}</li>`).join("") : `<li>${escapeHtml("后四位环境象不偏极端，先按主旺五行看家宅和工作场地变化。")}</li>`}</ul>
+          </article>
+          <article class="report professional-only">
+            <div class="report-head"><h3>推断流程</h3><div class="score">${processSteps.length}</div></div>
+            <ol>${processSteps.map((text) => `<li>${escapeHtml(text)}</li>`).join("")}</ol>
           </article>
           <article class="report professional-only">
             <div class="report-head"><h3>专业依据</h3><div class="score">${profile.strongest}</div></div>
@@ -3710,6 +4415,156 @@
       return map[element] || map.土;
     }
 
+    function baziDiseaseOrganByElement(element) {
+      const map = {
+        木: "肝脏、胆囊、筋膜、眼睛和疏泄系统",
+        火: "心脏、小肠、血液循环、血压和睡眠系统",
+        土: "脾胃、消化、肌肉、湿气和代谢系统",
+        金: "肺部、大肠、皮肤、鼻咽和呼吸系统",
+        水: "肾脏、膀胱、泌尿、生殖、骨骼和内分泌"
+      };
+      return map[element] || "对应脏腑";
+    }
+
+    function baziStemOrgan(stem) {
+      const map = {
+        甲: "肝", 乙: "胆", 丙: "小肠", 丁: "心脏", 戊: "胃", 己: "脾",
+        庚: "大肠", 辛: "肺", 壬: "膀胱", 癸: "肾"
+      };
+      return map[stem] || "";
+    }
+
+    function baziBodySlots(ctx) {
+      const pillars = ctx.pillars;
+      const stemSlots = [
+        { key: "yearStem", label: "年干", area: "头部", side: "左半身", pillar: pillars[0], stem: pillars[0].stem, source: "stem" },
+        { key: "monthStem", label: "月干", area: "胸部", side: "左半身", pillar: pillars[1], stem: pillars[1].stem, source: "stem" },
+        { key: "dayStem", label: "日元", area: "小腹", side: "左半身", pillar: pillars[2], stem: pillars[2].stem, source: "stem" },
+        { key: "hourStem", label: "时干", area: "膝盖以上", side: "左半身", pillar: pillars[3], stem: pillars[3].stem, source: "stem" }
+      ];
+      const branchSlots = [
+        { key: "yearBranch", label: "年支", area: "脖子", side: "右半身", pillar: pillars[0], branch: pillars[0].branch, source: "branch" },
+        { key: "monthBranch", label: "月支", area: "腹部", side: "右半身", pillar: pillars[1], branch: pillars[1].branch, source: "branch" },
+        { key: "dayBranch", label: "日支", area: "屁股、胯部、大腿", side: "右半身", pillar: pillars[2], branch: pillars[2].branch, source: "branch" },
+        { key: "hourBranch", label: "时支", area: "小腿、脚部", side: "右半身", pillar: pillars[3], branch: pillars[3].branch, source: "branch" }
+      ];
+      return stemSlots.concat(branchSlots);
+    }
+
+    function baziDiseaseTextForSlot(god, slot, stem) {
+      const organ = baziStemOrgan(stem) || baziDiseaseOrganByElement(stemElement[stem]);
+      const place = `${slot.label}${slot.source === "branch" ? slot.branch : stem}落${slot.area}`;
+      if (god === "偏印") {
+        if (slot.area.includes("脖子")) return `${place}见偏印，偏${slot.side}经络淤堵，脖颈更容易酸、麻、肿、胀。`;
+        if (slot.area.includes("胸部")) return `${place}见偏印，胸部和乳腺容易增生、结节、胀痛或经络堵滞。`;
+        return `${place}见偏印，${organ}对应区域多应经络淤堵、酸麻肿胀、恢复慢，偏${slot.side}更明显。`;
+      }
+      if (god === "七杀") {
+        if (slot.area.includes("头部")) return `${place}见七杀，头部更容易偏头痛、头部疮痘、炎症或实际痛点。`;
+        if (slot.area.includes("脖子")) return `${place}见七杀，脖颈更容易颈椎病痛、僵硬、压迫感或反复疼痛。`;
+        if (slot.area.includes("胸部")) return `${place}见七杀，胸部和乳腺风险偏重，旺相时乳腺重症信号增强。`;
+        if (slot.area.includes("腹部")) return `${place}见七杀，腹部更容易肠胃炎、胃痛、腹痛或消化系统实际病痛。`;
+        if (slot.area.includes("胯部")) return `${place}见七杀，女性多看妇科，男性多看前列腺、阴囊潮湿、痔疮或胯腿痛点。`;
+        return `${place}见七杀，${organ}对应区域比偏印更重，多应实际病痛、炎症、结节或反复疼痛。`;
+      }
+      return "";
+    }
+
+    function baziVisibleElementCounts(ctx) {
+      const counts = { 木: 0, 火: 0, 土: 0, 金: 0, 水: 0 };
+      ctx.pillars.forEach((pillar) => {
+        counts[stemElement[pillar.stem]] += 1;
+        counts[branchElement[pillar.branch]] += 1;
+      });
+      return counts;
+    }
+
+    function baziClashInjuredElement(leftElement, rightElement) {
+      if (leftElement === rightElement) return leftElement;
+      if (controlsElement(leftElement, rightElement)) return rightElement;
+      if (controlsElement(rightElement, leftElement)) return leftElement;
+      return rightElement;
+    }
+
+    function baziClashDiseaseText(leftLabel, left, rightLabel, right, type = "branch") {
+      const leftElement = type === "stem" ? stemElement[left] : branchElement[left];
+      const rightElement = type === "stem" ? stemElement[right] : branchElement[right];
+      const injured = baziClashInjuredElement(leftElement, rightElement);
+      const prefix = `${leftLabel}${left}与${rightLabel}${right}相冲，${injured}受伤`;
+      if ((left === "卯" && right === "酉") || (left === "酉" && right === "卯")) {
+        return `${prefix}，胆囊炎、胆结石、胆息肉、肝胆不适信号明显。`;
+      }
+      if ((left === "丁" && right === "癸") || (left === "癸" && right === "丁") || ((left === "子" && right === "午") || (left === "午" && right === "子"))) {
+        return `${prefix}，血液系统、心脏血压、睡眠和心火问题更容易被引动。`;
+      }
+      if ((left === "丑" && right === "未") || (left === "未" && right === "丑") || (left === "辰" && right === "戌") || (left === "戌" && right === "辰")) {
+        return `${prefix}，脾胃、腹部、湿气、肿胀和消化问题会加重。`;
+      }
+      return `${prefix}，${baziDiseaseOrganByElement(injured)}容易出现病痛、炎症或反复不适。`;
+    }
+
+    function baziSelfDiseaseLines(ctx, options = {}) {
+      const dayStem = ctx.pillars[2].stem;
+      const lines = [];
+      const slots = baziBodySlots(ctx);
+
+      slots.forEach((slot) => {
+        if (slot.source === "stem") {
+          if (slot.key === "dayStem") return;
+          const god = tenGod(dayStem, slot.stem);
+          if (["偏印", "七杀"].includes(god)) lines.push(baziDiseaseTextForSlot(god, slot, slot.stem));
+        } else {
+          (hiddenStems[slot.branch] || []).forEach((stem) => {
+            const god = tenGod(dayStem, stem);
+            if (["偏印", "七杀"].includes(god)) lines.push(baziDiseaseTextForSlot(god, slot, stem));
+          });
+        }
+      });
+
+      const visibleCounts = baziVisibleElementCounts(ctx);
+      elementCycle.forEach((element) => {
+        const count = visibleCounts[element] || 0;
+        if (count >= 3) {
+          const controlled = elementCycle.find((item) => controlsElement(element, item));
+          const severity = count >= 4 ? "四见成病" : "三见成势";
+          lines.push(`${element}${count}见，${severity}，${baziDiseaseOrganByElement(element)}容易形成病根；${controlled ? `${element}旺克${controlled}，${baziDiseaseOrganByElement(controlled)}也会被牵动。` : ""}`);
+        }
+      });
+
+      const stemSlots = slots.filter((slot) => slot.source === "stem" && slot.key !== "dayStem");
+      for (let i = 0; i < stemSlots.length; i += 1) {
+        for (let j = i + 1; j < stemSlots.length; j += 1) {
+          if (stemClashPairs[stemSlots[i].stem] === stemSlots[j].stem) {
+            lines.push(baziClashDiseaseText(stemSlots[i].label, stemSlots[i].stem, stemSlots[j].label, stemSlots[j].stem, "stem"));
+          }
+        }
+      }
+
+      const branchSlots = slots.filter((slot) => slot.source === "branch");
+      for (let i = 0; i < branchSlots.length; i += 1) {
+        for (let j = i + 1; j < branchSlots.length; j += 1) {
+          if (clashPairs[branchSlots[i].branch] === branchSlots[j].branch) {
+            lines.push(baziClashDiseaseText(branchSlots[i].label, branchSlots[i].branch, branchSlots[j].label, branchSlots[j].branch, "branch"));
+          }
+        }
+      }
+
+      const targetPillar = options.pillar;
+      if (targetPillar) {
+        ctx.pillars.forEach((pillar, index) => {
+          const label = ["年", "月", "日", "时"][index];
+          if (stemClashPairs[targetPillar.stem] === pillar.stem) {
+            lines.push(baziClashDiseaseText("流干", targetPillar.stem, `${label}干`, pillar.stem, "stem"));
+          }
+          if (clashPairs[targetPillar.branch] === pillar.branch) {
+            lines.push(baziClashDiseaseText("流支", targetPillar.branch, `${label}支`, pillar.branch, "branch"));
+          }
+        });
+      }
+
+      return uniqueList(lines.filter(Boolean)).slice(0, 4);
+    }
+
     function dominantHealthElements(ctx, targetPillar, dynamic) {
       const candidates = [
         stemElement[targetPillar.stem],
@@ -3737,10 +4592,14 @@
       const strongLike = ["偏旺", "从强"].includes(strength.label);
       const weakLike = ["偏弱", "从弱"].includes(strength.label);
       const lines = [];
+      const diseaseLines = baziSelfDiseaseLines(ctx, { pillar: targetPillar });
+      diseaseLines.slice(0, 3).forEach((line) => lines.push(line));
 
-      if (strongLike) lines.push(`当前能量偏旺，${main.area}更容易过度反应，表现为${main.excess}。`);
-      else if (weakLike) lines.push(`当前承接力偏弱，${main.area}更容易恢复慢，表现为${main.weak}。`);
-      else lines.push(`当前身体信号不偏单一，${main.area}先有阶段性波动，随后牵动${secondary.area}。`);
+      if (lines.length < 4) {
+        if (strongLike) lines.push(`当前能量偏旺，${main.area}更容易过度反应，表现为${main.excess}。`);
+        else if (weakLike) lines.push(`当前承接力偏弱，${main.area}更容易恢复慢，表现为${main.weak}。`);
+        else lines.push(`当前身体信号不偏单一，${main.area}先有阶段性波动，随后牵动${secondary.area}。`);
+      }
 
       if (effectText.includes("冲")) lines.push("有冲动信号，容易出现磕碰、拉伤、赶路疲劳、旧症突然翻起或睡眠被打断。");
       if (effectText.includes("刑")) lines.push("有刑象，压力会往身体里收，容易紧绷、炎症、疼痛点、口舌牙龈或筋骨不舒服。");
@@ -3843,6 +4702,336 @@
         return "同支有伏吟意味，旧事、旧客户、旧流程可能重复出现。";
       }
       return "冲合刑破害不重，事件多由十神和五行喜忌触发。";
+    }
+
+    function flowPeriodKey(value) {
+      const text = String(value || "");
+      if (text.includes("大运") || text === "luck") return "luck";
+      if (text.includes("流年") || text === "year") return "year";
+      if (text.includes("流月") || text === "month") return "month";
+      if (text.includes("流日") || text === "day") return "day";
+      return text || "day";
+    }
+
+    function flowLayerName(key) {
+      return { luck: "大运", year: "流年", month: "流月", day: "流日" }[key] || "流动";
+    }
+
+    function solarBoundaryDates(year) {
+      return [
+        { name: "立春", date: new Date(year, 1, 4, 12) },
+        { name: "惊蛰", date: new Date(year, 2, 6, 12) },
+        { name: "清明", date: new Date(year, 3, 5, 12) },
+        { name: "立夏", date: new Date(year, 4, 6, 12) },
+        { name: "芒种", date: new Date(year, 5, 6, 12) },
+        { name: "小暑", date: new Date(year, 6, 7, 12) },
+        { name: "立秋", date: new Date(year, 7, 8, 12) },
+        { name: "白露", date: new Date(year, 8, 8, 12) },
+        { name: "寒露", date: new Date(year, 9, 8, 12) },
+        { name: "立冬", date: new Date(year, 10, 7, 12) },
+        { name: "大雪", date: new Date(year, 11, 7, 12) },
+        { name: "小寒", date: new Date(year + 1, 0, 6, 12) }
+      ];
+    }
+
+    function solarTransitionText(date, periodKey) {
+      if (!["year", "month"].includes(periodKey)) return "";
+      const dayMs = 86400000;
+      let boundaries = solarBoundaryDates(date.getFullYear() - 1).concat(solarBoundaryDates(date.getFullYear()));
+      if (periodKey === "year") boundaries = boundaries.filter((item) => item.name === "立春");
+      const target = boundaries
+        .map((item) => ({ ...item, diff: (date - item.date) / dayMs }))
+        .filter((item) => item.diff >= -3 && item.diff <= 4)
+        .sort((a, b) => Math.abs(a.diff) - Math.abs(b.diff))[0];
+      if (!target) return "";
+      const phase = target.diff < 0 ? `节气前${Math.ceil(Math.abs(target.diff))}天` : `节气后${Math.floor(target.diff)}天`;
+      return `${target.name}${phase}属于能量交接期，新旧月气会提前或延后应事，原本的事件容易早3天或拖后4天显现。`;
+    }
+
+    function pillarStemBranchEnergyText(ctx, pillar) {
+      const stemEl = stemElement[pillar.stem];
+      const branchEl = branchElement[pillar.branch];
+      const branchGod = relation(ctx.dayElement, branchEl);
+      const stemFav = ctx.favorable.includes(stemEl);
+      const branchFav = ctx.favorable.includes(branchEl);
+      if (stemEl === branchEl) {
+        return `干支一气，${stemEl}气叠加，应事程度明显放大；${stemFav ? "此气属喜用，成事、资源和结果更容易被推出来。" : "此气不属优先喜用，压力、破耗、身体反应或关系矛盾会被放大。"}`;
+      }
+      if (generatesElement(stemEl, branchEl)) {
+        return `天干${stemEl}生地支${branchEl}，被生的${branchEl}气增强，事件更落在${branchGod}、${branchFav ? "喜用承接" : "现实压力"}上。`;
+      }
+      if (generatesElement(branchEl, stemEl)) {
+        return `地支${branchEl}生天干${stemEl}，${stemEl}透出显象更快，外部消息、人物和表面事件会先出现。`;
+      }
+      if (controlsElement(stemEl, branchEl) || controlsElement(branchEl, stemEl)) {
+        return `干支相克，${stemEl}与${branchEl}互耗，应事先有阻力、争执或反复，事件大小要再看合化、刑冲和透干是否放大。`;
+      }
+      return "";
+    }
+
+    function flowTimingText(ctx, date, periodKey, pillar) {
+      const stemText = `${pillar.stem}${stemElement[pillar.stem]}`;
+      const branchText = `${pillar.branch}${branchElement[pillar.branch]}`;
+      const transition = solarTransitionText(date, periodKey);
+      if (periodKey === "luck") {
+        const lucks = ctx.lucks || buildLuckCycles(ctx);
+        const active = lucks.find((luck) => luck.pillar.text === pillar.text && date.getFullYear() >= luck.startYear && date.getFullYear() <= luck.endYear);
+        if (active) {
+          const yearIndex = date.getFullYear() - active.startYear + 1;
+          const stemLead = yearIndex <= 5;
+          return `大运第${yearIndex}年，${stemLead ? stemText : branchText}主事约70%，${stemLead ? branchText : stemText}保留30%并参与合冲刑破害。`;
+        }
+        return `大运前五年天干约70%、后五年地支约70%，另一方仍参与合冲刑破害。`;
+      }
+      if (periodKey === "year") {
+        const stemLead = date.getMonth() < 6;
+        return `流年${stemLead ? "前半年" : "后半年"}，${stemLead ? stemText : branchText}主事约70%，${stemLead ? branchText : stemText}保留30%并参与合冲刑破害。${transition}`;
+      }
+      if (periodKey === "month") {
+        const stemLead = date.getDate() <= 15;
+        return `流月按24节气换月，${stemLead ? "前半月" : "后半月"}由${stemLead ? stemText : branchText}显象更强，另一方继续参与合冲刑破害。${transition}`;
+      }
+      if (periodKey === "day") return `流日${pillar.text}直接落到当天，天干主外显事件，地支主实际承接和身体关系反应。`;
+      return "";
+    }
+
+    function branchPairCode(a, b) {
+      if (!a || !b) return "";
+      return [a, b].sort((left, right) => branches.indexOf(left) - branches.indexOf(right)).join("");
+    }
+
+    function interactionBranches(item) {
+      return uniqueList([item?.targetBranch, item?.baseBranch].filter(Boolean));
+    }
+
+    function interactionElements(item) {
+      const elements = [];
+      if (item?.element) elements.push(...elementParts(item.element));
+      [item?.targetBranch, item?.baseBranch].filter(Boolean).forEach((branch) => elements.push(branchElement[branch]));
+      [item?.target?.pillar?.stem, item?.base?.pillar?.stem].filter(Boolean).forEach((stem) => elements.push(stemElement[stem]));
+      return uniqueList(elements);
+    }
+
+    function interactionHasStemElement(ctx, item, element) {
+      const stemsToCheck = ctx.pillars.map((pillar) => pillar.stem)
+        .concat([item?.target?.pillar?.stem, item?.base?.pillar?.stem].filter(Boolean));
+      return stemsToCheck.some((stem) => stemElement[stem] === element);
+    }
+
+    function interactionTransformPowerText(ctx, item) {
+      if (!item?.element) return "";
+      const elements = elementParts(item.element);
+      const visible = elements.some((element) => interactionHasStemElement(ctx, item, element));
+      if (item.type === "合") return visible || item.transformed ? "约10倍" : "约5倍";
+      if (item.type === "三合") return visible || item.transformed ? "约15倍" : "约7-8倍";
+      if (item.type === "三会") return visible || item.transformed ? "约20倍" : "约10倍";
+      return "";
+    }
+
+    function interactionTouches(item, key) {
+      return item?.target?.key === key || item?.base?.key === key;
+    }
+
+    function flowDirectInteractions(ctx, pillar, periodKey) {
+      if (!pillar) return [];
+      const label = flowLayerName(periodKey);
+      const targetLayer = { key: periodKey, label, pillar, weight: 1.05 };
+      const stack = { layers: [targetLayer] };
+      const interactions = [];
+      natalBranchLayers(ctx).forEach((baseLayer) => {
+        const targetStem = pillar.stem;
+        const baseStem = baseLayer.pillar.stem;
+        const combineElement = stemCombinePairs[targetStem] === baseStem ? stemCombineElement(targetStem, baseStem) : "";
+        if (combineElement) {
+          const item = {
+            type: "合",
+            element: combineElement,
+            target: targetLayer,
+            base: baseLayer,
+            targetBranch: pillar.branch,
+            baseBranch: baseLayer.pillar.branch,
+            weight: 1.05
+          };
+          item.transformed = stemTransformAllowed(ctx, item, stack);
+          item.label = `${label}${targetStem}${item.transformed ? "合化" : "合"}${baseLayer.label}${baseStem}${item.transformed ? `化${combineElement}` : "牵动"}`;
+          interactions.push(item);
+        }
+        if (stemClashPairs[targetStem] === baseStem) {
+          interactions.push({
+            type: "冲",
+            element: uniqueList([stemElement[targetStem], stemElement[baseStem]]).join(""),
+            label: `${label}${targetStem}冲${baseLayer.label}${baseStem}`,
+            target: targetLayer,
+            base: baseLayer,
+            targetBranch: pillar.branch,
+            baseBranch: baseLayer.pillar.branch,
+            weight: 1.05
+          });
+        }
+        branchRelationObjects(pillar.branch, baseLayer.pillar.branch).forEach((relationItem) => {
+          const item = {
+            ...relationItem,
+            target: targetLayer,
+            base: baseLayer,
+            targetBranch: pillar.branch,
+            baseBranch: baseLayer.pillar.branch,
+            weight: 1.05,
+            label: `${label}${relationItem.type}${baseLayer.label}支${baseLayer.pillar.branch}${relationElementSuffix(relationItem)}`
+          };
+          if (item.type === "合") {
+            item.transformed = branchTransformAllowed(ctx, item, stack);
+            item.label = `${label}${item.transformed ? "合化" : "合"}${baseLayer.label}支${baseLayer.pillar.branch}${item.transformed ? relationElementSuffix(item) : "牵动"}`;
+          }
+          interactions.push(item);
+        });
+      });
+      return interactions;
+    }
+
+    function uniqueInteractions(items) {
+      const seen = new Set();
+      return items.filter((item) => {
+        const key = `${item.type}:${item.label}:${item.element || ""}`;
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+    }
+
+    function flowRelevantInteractions(ctx, date, periodKey, pillar, dynamic) {
+      const stack = dynamic?.stack || flowStackForDate(ctx, date);
+      const all = flowBranchInteractions(ctx, stack)
+        .concat(flowStemInteractions(ctx, stack))
+        .concat(branchGroupCompletions(ctx, stack));
+      const matched = all.filter((item) => {
+        const keyHit = interactionTouches(item, periodKey);
+        const pillarHit = pillar && (item.target?.pillar?.text === pillar.text || item.base?.pillar?.text === pillar.text);
+        return keyHit || pillarHit;
+      });
+      return uniqueInteractions(matched.concat(flowDirectInteractions(ctx, pillar, periodKey)))
+        .sort((a, b) => (b.weight || 1) - (a.weight || 1));
+    }
+
+    function flowInteractionOutcome(ctx, item) {
+      const pair = branchPairCode(item.targetBranch, item.baseBranch);
+      const elements = interactionElements(item);
+      const favorable = elements.filter((element) => ctx.favorable.includes(element));
+      const hasWealth = elements.some((element) => relation(ctx.dayElement, element) === "财星");
+      const people = impactFocus([item]).people;
+      if (item.type === "三会" || item.type === "三合") {
+        const multiple = interactionTransformPowerText(ctx, item);
+        return ctx.favorable.includes(item.element)
+          ? `${item.label}，${item.element}气${multiple}放大且为喜用，容易把${people}带来的资源、合作或财机推到台前。`
+          : `${item.label}，${item.element}气${multiple}放大但不属优先喜用，容易形成压力堆积、关系牵扯、破财或身体消耗。`;
+      }
+      if (item.type === "合") {
+        const elementText = item.element || elements.join("");
+        const multiple = interactionTransformPowerText(ctx, item);
+        if (pair === "子丑" && elementText.includes("土") && !ctx.favorable.includes("土")) return `${item.label}，子丑合土为忌，土气${multiple}牵动，钱款被合住，容易破财、库存压款、合伙分账或人情支出增加。`;
+        if (elementText && elementIsFavorable(ctx, elementText)) return `${item.label}，合出${elementText}为喜用，能量${multiple}增强，容易出现合作牵线、客户介绍、资源成事或贵人帮忙。`;
+        if (elementText && elementIsWealth(ctx, elementText)) return `${item.label}，合出${elementText}为财星，能量${multiple}增强，客户、报价、回款和分账边界会一起变明显。`;
+        return `${item.label}，合出忌神或牵扯过重，能量${multiple}会把人情、合作条件、家庭事务或钱款承诺放大。`;
+      }
+      if (item.type === "冲") {
+        if (pair === "子午" && ctx.favorable.includes("火")) return `${item.label}，子午冲走午火喜用，容易因病痛、岗位变动、升迁错失、客户流失或收入减少而应事。`;
+        if (pair === "辰戌" || pair === "丑未") {
+          const multiple = interactionHasStemElement(ctx, item, "土") ? "约10倍" : "约5倍";
+          return `${item.label}，库地相冲使土气${multiple}放大，房产家宅、库存积压、脾胃湿气、工作责任和合同压力会同时浮出。`;
+        }
+        if (favorable.length) return `${item.label}，冲动喜用${favorable.join("、")}，容易出现机会被打断、临时改期、关系翻脸、岗位或收入波动。`;
+        return `${item.label}，冲动忌神，旧问题会被冲开，先出现争执、搬动或计划改变，随后压力有松动。`;
+      }
+      if (item.type === "刑") {
+        if (pair === "子卯") {
+          const touchesDay = interactionTouches(item, "birthDay");
+          const touchesHour = interactionTouches(item, "birthHour");
+          const relationText = touchesDay ? "夫妻伴侣、合作关系容易争吵冷战" : "人际边界和沟通情绪容易变紧";
+          const childText = touchesHour ? "，也会牵动子女晚辈、怀孕流产或下属交付问题" : "";
+          return `${item.label}成子卯刑，${relationText}${childText}，肝胆胆囊炎症、手术检查和情绪内耗信号增强。`;
+        }
+        return `${item.label}，刑象主压力内收，容易出现口舌、处罚、伤病、官非、亲人宫位不安或事情卡住。`;
+      }
+      if (item.type === "破") return `${item.label}，破象主暗损，容易发生设备损坏、合同漏洞、关系裂缝、定金尾款拆分或计划重做。`;
+      if (item.type === "害") {
+        if (pair === "子未") return `${item.label}，子未害主暗耗，皮肤过敏、脾胃湿气、误会拖延和人情消耗会更明显。`;
+        return `${item.label}，害象主暗耗误会，口头承诺、文件细节、时间节点和身体小毛病容易拖大。`;
+      }
+      if (item.type === "同") return `${item.label}有伏吟重复象，旧人旧事、旧客户、旧病旧问题容易再次出现。`;
+      return "";
+    }
+
+    function flowSpecialEvents(ctx, date, periodKey, pillar, interactions, dynamic) {
+      const stack = dynamic?.stack || flowStackForDate(ctx, date);
+      const branchSet = new Set(ctx.pillars.map((item) => item.branch));
+      stack.layers.forEach((layer) => branchSet.add(layer.pillar.branch));
+      if (pillar?.branch) branchSet.add(pillar.branch);
+      const lines = [];
+      const hasZiMao = branchSet.has("子") && branchSet.has("卯") && (pillar?.branch === "子" || pillar?.branch === "卯" || interactions.some((item) => branchPairCode(item.targetBranch, item.baseBranch) === "子卯"));
+      if (hasZiMao && [5, 6, 11, 12].includes(date.getMonth() + 1)) {
+        lines.push("子卯刑在水木旺月被加重，夫妻争吵、合作翻脸、胆囊肝胆问题和子女晚辈事件更容易集中出现。");
+      }
+      const hasEarthPunishment = ["丑", "未", "戌"].every((branch) => branchSet.has(branch)) && ["丑", "未", "戌"].includes(pillar?.branch || "");
+      if (hasEarthPunishment) {
+        const soilVisible = ctx.pillars.map((item) => item.stem).concat(stack.layers.map((layer) => layer.pillar.stem)).some((stem) => stemElement[stem] === "土");
+        const multiple = soilVisible ? "约15倍" : "约7-8倍";
+        lines.push(ctx.favorable.includes("土")
+          ? `丑未戌三刑补齐，土气${multiple}打开，房产库存、固定资产、长期项目或家宅责任会被集中处理。`
+          : `丑未戌三刑补齐，土气${multiple}混战，母亲健康、破财、工作压力、合同责任和脾胃湿气会同步加重。`);
+      }
+      const concurrent = concurrentSignals(ctx, flowLayerProfiles(ctx, stack))
+        .filter((item) => {
+          if (periodKey === "luck") return item.label.includes("运");
+          if (periodKey === "year") return item.label.includes("岁") || item.label.includes("年");
+          if (periodKey === "month") return item.label.includes("月");
+          if (periodKey === "day") return item.label.includes("日");
+          return true;
+        });
+      if (concurrent.length) {
+        const first = concurrent[0];
+        lines.push(`${first.label}把同类能量重复放大，旧事重现、同类客户关系、身体同一部位反复或钱款节点重复确认会更明显。`);
+      }
+      return uniqueList(lines).slice(0, 3);
+    }
+
+    function flowPeriodEvent(ctx, options = {}) {
+      const date = options.date || new Date();
+      const periodKey = flowPeriodKey(options.periodKey || options.type);
+      const pillar = options.pillar || periodPillar(periodKey === "luck" ? "year" : periodKey);
+      const stemGod = options.stemGod || tenGod(ctx.pillars[2].stem, pillar.stem);
+      const stars = options.stars || symbolicStars(ctx, pillar);
+      const effects = options.effects || branchEffects(ctx, pillar);
+      const dynamic = options.dynamic || dynamicStrengthProfile(ctx, date);
+      const timing = flowTimingText(ctx, date, periodKey, pillar);
+      const pillarEnergy = pillarStemBranchEnergyText(ctx, pillar);
+      const interactions = flowRelevantInteractions(ctx, date, periodKey, pillar, dynamic);
+      const outcomes = uniqueList(interactions.map((item) => flowInteractionOutcome(ctx, item)).filter(Boolean));
+      const specials = flowSpecialEvents(ctx, date, periodKey, pillar, interactions, dynamic);
+      const starText = shortSentences(starPrediction(stars).join(""), 1);
+      const tenGodText = shortSentences(tenGodScenario(stemGod, { ...ctx, strength: dynamic.current || ctx.strength }), 1);
+      const fallbackEffect = shortSentences(effectStrategy(effects.join("、"), stemGod), 1);
+      const main = uniqueList([timing, pillarEnergy, tenGodText, outcomes[0] || specials[0] || fallbackEffect, starText])
+        .filter(Boolean)
+        .slice(0, 4)
+        .join("");
+      const risk = uniqueList(outcomes.concat(specials))
+        .find((text) => /冲|刑|破|害|破财|病|手术|流产|压力|争吵|失职|收入减少|暗耗|官非/.test(text))
+        || fallbackEffect;
+      const money = uniqueList(outcomes.concat(specials, [tenGodText]))
+        .find((text) => /财|钱|收入|回款|客户|报价|库存|合同|岗位|升迁/.test(text))
+        || (stemGod.includes("财") ? tenGodText : "");
+      const people = uniqueList(outcomes.concat(specials, [starText]))
+        .find((text) => /伴侣|夫妻|父母|母亲|子女|晚辈|客户|合作|同事|上级|贵人|亲人|家宅/.test(text))
+        || "";
+      return {
+        timing,
+        main,
+        risk,
+        money,
+        people,
+        outcomes,
+        specials,
+        interactions
+      };
     }
 
     function actionAdvice(stemGod, effectText) {
@@ -3986,6 +5175,7 @@
       const firstFavorable = ctx.favorable[0];
       const pattern = ctx.pattern || buildPattern(ctx);
       const dynamic = ctx.dynamicStrength || dynamicStrengthProfile(ctx, new Date());
+      const yearEvent = flowPeriodEvent(ctx, { periodKey: "year", pillar: currentYear, stemGod: yearGod, stars: yearStars, effects: yearEffects, dynamic });
       return [
         {
           label: "动态强弱",
@@ -4000,12 +5190,12 @@
         {
           label: "今年应事",
           title: `${currentYear.text}年引动${yearGod}`,
-          text: `${tenGodScenario(yearGod, ctx)}${starPrediction(yearStars).slice(0, 2).join("")}`
+          text: yearEvent.main
         },
         {
           label: "风险应事",
           title: yearEffects[0] || "稳步推进",
-          text: `${yearEffects.join("、")}。${effectStrategy(yearEffects.join("、"), yearGod)}`
+          text: `${yearEffects.join("、")}。${yearEvent.risk}`
         }
       ];
     }
@@ -4047,6 +5237,7 @@
       const adjustedScore = Math.max(42, Math.min(96, score + knowledgeScore));
       const knowledgeNote = knowledgeText(matches, "report", 2);
       const matchedTags = knowledgeTags(matches).slice(0, 3);
+      const flowEvent = ctx ? flowPeriodEvent(ctx, { periodKey, pillar: p, stemGod, stars, effects, dynamic: ctx.dynamicStrength || dynamicStrengthProfile(ctx, new Date()) }) : null;
       const periodFocus = {
         day: "当天容易出现临时联系、付款确认、见面沟通或身体反应。",
         week: "本周事情分段出现，先有触发，再有反馈。",
@@ -4065,15 +5256,18 @@
         : effectText.includes("合")
           ? "合作、邀约、旧关系牵动明显。"
           : "人际变化多来自临时沟通、误会和安排不清。";
+      const mainEvent = flowEvent?.main || `${periodFocus}${relationHint}`;
+      const moneyEvent = flowEvent?.money || `${moneyHint}${stemGod.includes("财") ? "客户、价格、回款、库存或复购会更明显。" : copy[mainElement].risk}`;
+      const peopleEvent = flowEvent?.people || peopleHint;
       return {
         title,
         periodKey,
         score: adjustedScore,
-        text: `${p.text}引动${stemGod}，${tone}。${dynamicHint}${moneyHint}${relationHint}${shortSentences(knowledgeNote, 1)}`,
+        text: `${p.text}引动${stemGod}，${tone}。${dynamicHint}${shortSentences(mainEvent, 2)}${shortSentences(knowledgeNote, 1)}`,
         items: [
-          eventLine("会发生", `${periodFocus}${relationHint}`),
-          eventLine("钱财事业", `${moneyHint}${stemGod.includes("财") ? "客户、价格、回款、库存或复购会更明显。" : copy[mainElement].risk}`),
-          eventLine("人际关系", peopleHint),
+          eventLine("会发生", mainEvent),
+          eventLine("钱财事业", moneyEvent),
+          eventLine("人际关系", peopleEvent),
           eventLine("身体状态", healthHint),
           starHint ? eventLine("神煞应事", starHint) : ""
         ].filter(Boolean),
@@ -5717,6 +6911,7 @@
       const matchedTags = knowledgeTags(matches).slice(0, 4);
       const scenarioText = tenGodScenario(stemGod, ctxForDate);
       const strategyText = effectStrategy(effects.join("、"), stemGod);
+      const flowEvent = flowPeriodEvent(ctx, { periodKey: type, pillar, stemGod, stars, effects, dynamic, date: detailDate });
       const detail = document.getElementById("flowDetail");
       detail.innerHTML = `
         <div class="detail-title">
@@ -5734,7 +6929,7 @@
         <p><strong>十神应事：</strong>${escapeHtml(scenarioText)}</p>
         <p><strong>动态强弱：</strong>${escapeHtml(dynamic.short)}${escapeHtml(dynamic.combineEffects.length ? ` 合化：${dynamic.combineEffects.slice(0, 2).map((item) => item.label).join("、")}。` : "")}</p>
         <p><strong>冲合刑破害：</strong>${escapeHtml(effects.join("、"))}</p>
-        <p><strong>会发生：</strong>${escapeHtml(strategyText)}${knowledgeNote ? escapeHtml(shortSentences(knowledgeNote, 1)) : ""}</p>
+        <p><strong>会发生：</strong>${escapeHtml(flowEvent.main || strategyText)}${knowledgeNote ? escapeHtml(shortSentences(knowledgeNote, 1)) : ""}</p>
       `;
       colorizeGanzhi(detail);
       refreshLanguage(detail);
